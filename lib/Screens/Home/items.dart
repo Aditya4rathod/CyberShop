@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:online_ordering_system/ApiServices.dart';
 import 'package:online_ordering_system/Provider/cartProvider.dart';
-import 'package:online_ordering_system/models/product.dart';
 import 'package:online_ordering_system/Provider/favoriteProvider.dart';
 import 'package:online_ordering_system/models/productModel.dart';
 import 'package:provider/provider.dart';
@@ -18,15 +16,11 @@ class Products extends StatefulWidget {
 }
 
 class _ProductsState extends State<Products> {
-
-  //FetchUserList _productList = FetchUserList();
-
   bool isLoading = false;
   TextEditingController userSearch = TextEditingController();
   List<ProductModel> productList = [];
   List<dynamic> searchList = [];
   bool search = false;
-
 
   @override
   void initState() {
@@ -43,8 +37,6 @@ class _ProductsState extends State<Products> {
     var response = await http.get(Uri.parse(api), headers: Header);
     if (response.statusCode == 200) {
       var responseBody = jsonDecode(response.body);
-      // var data = responseBody['data'];
-      // pref(id);
 
       setState(() {
         productList = [ProductModel.fromJson(responseBody)];
@@ -54,12 +46,10 @@ class _ProductsState extends State<Products> {
       print(response.statusCode);
       print(responseBody);
       return productList;
-    }
-    else if (response.statusCode == 500){
+    } else if (response.statusCode == 500) {
       Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
       return productList;
-    }
-    else {
+    } else {
       var responseBody = jsonDecode(response.body);
       print(response.statusCode);
       print(responseBody);
@@ -83,9 +73,6 @@ class _ProductsState extends State<Products> {
           style: TextStyle(
             color: Colors.white,
           ),
-          // onTap: (){
-          //   getProduct(query: userSearch.text);
-          // },
           decoration: InputDecoration(
               contentPadding: EdgeInsets.all(4),
               filled: true,
@@ -97,320 +84,309 @@ class _ProductsState extends State<Products> {
                 color: Color(0xFF0695b4),
                 size: 25,
               ),
-              // suffixIcon: GestureDetector(
-              //   onTap: (){
-              //
-              //   },
-              //   child: Icon(
-              //     Icons.cancel,
-              //     color: Colors.white70,
-              //     size: 22,
-              //   ),
-              // ),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide.none
-              )
-          ),
-           onChanged: (value){
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none)),
+          onChanged: (value) {
             List<dynamic> result = [];
-            if(value.isEmpty) {
+            if (value.isEmpty) {
               result = productList;
               setState(() {
                 search = false;
               });
-            }
-            else{
+            } else {
               result = productList[0].data.where((element) => element.title!.toLowerCase().contains((value.toLowerCase()))).toList();
               setState(() {
                 search = true;
               });
             }
             searchList = result;
-           },
+          },
         ),
         Divider(),
-        isLoading ?Flexible(
-          child: !search ? GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: 5,
-                crossAxisSpacing: 5,
-                crossAxisCount: 2,
-                childAspectRatio: 0.75,
-              ),
-              itemCount: productList == null ? 0 : productList[0].data.length,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/detail',
-                      arguments: productList[0].data[index],
-                    );
-                  },
-                  child: Stack(children: [
-                    Card(
-                      child: GridTile(
-                        child: Image.network(productList[0].data[index].imageUrl, fit: BoxFit.fitHeight),
-                        footer: GridTileBar(
-                          backgroundColor: Color(0xFF262a34),
-                          title: Text(
-                            productList[0].data[index].title.toString(),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          subtitle: Text(
-                            "£" + productList[0].data[index].price,
-                            style: TextStyle(
-                              color: Color(0xFF0695b4),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          trailing: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF262a34),
-                              ),
-                              child: productList[0].data[index].quantity != 0
-                              ? Row(
-                                children: [
-                                  InkWell(
-                                    onTap: (){
-                                      cart.decreaseProductQuantity(productList[0].data[index].cartItemId.toString());
-                                      getProduct();
-                                    },
-                                    child: CircleAvatar(
-                                      radius: 15,
-                                      backgroundColor: Colors.grey.withOpacity(.1),
-                                      child: Icon(
-                                        Icons.remove,
-                                        color: Colors.white70,
-                                        size: 15,
+        isLoading
+            ? Flexible(
+                child: !search
+                    ? GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 5,
+                          crossAxisSpacing: 5,
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.75,
+                        ),
+                        itemCount: productList == null ? 0 : productList[0].data.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                '/detail',
+                                arguments: productList[0].data[index],
+                              );
+                            },
+                            child: Stack(children: [
+                              Card(
+                                child: GridTile(
+                                  child: Image.network(productList[0].data[index].imageUrl, fit: BoxFit.fitHeight),
+                                  footer: GridTileBar(
+                                    backgroundColor: Color(0xFF262a34),
+                                    title: Text(
+                                      productList[0].data[index].title.toString(),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                  ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        productList[0].data[index].quantity.toString(), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0695b4)),
-                                      ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  InkWell(
-                                    onTap: (){
-                                      cart.increaseProductQuantity(productList[0].data[index].cartItemId.toString());
-                                      getProduct();
-                                    },
-                                    child: CircleAvatar(
-                                      radius: 15,
-                                      backgroundColor: Colors.grey.withOpacity(.1),
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white70,
-                                        size: 15,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )
-                                  : IconButton(
-                                      onPressed: () async{
-                                        print(productList[0].data[index].id.toString());
-                                       await cart.addToCart(productList[0].data[index].id.toString());
-                                        getProduct();
-                                      },
-                                      icon: Icon(
-                                        Icons.shopping_cart_outlined,
+                                    subtitle: Text(
+                                      "£" + productList[0].data[index].price,
+                                      style: TextStyle(
                                         color: Color(0xFF0695b4),
-                                      ))),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 5, 5, 0),
-                        child: Container(
-                          height: 35,
-                          width: 35,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xFF262a34),
-                          ),
-                          child: productList[0].data[index].watchListItemId != ''
-                              ? GestureDetector(
-                                  onTap: () {
-                                    favorite.removeFromFav(productList[0].data[index].watchListItemId.toString());
-                                    getProduct();
-                                  },
-                                  child: Icon(
-                                    Icons.favorite,
-                                    color: Colors.red,
-                                    size: 18,
-                                  ))
-                              : GestureDetector(
-                                  onTap: () {
-                                    getProduct();
-                                    favorite.addToWishlist(productList[0].data[index].id.toString());
-                                  },
-                                  child: Icon(
-                                          Icons.favorite_outline,
-                                          color: Colors.white70,
-                                          size: 18,
-                                        )
-                          ),
-                        ),
-                      ),
-                    )
-                  ]),
-                );
-              }) : GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: 5,
-                crossAxisSpacing: 5,
-                crossAxisCount: 2,
-                childAspectRatio: 0.75,
-              ),
-              itemCount: searchList.length,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/detail',
-                      arguments: productList[0].data[index],
-                    );
-                  },
-                  child: Stack(children: [
-                    Card(
-                      child: GridTile(
-                        child: Image.network(searchList[index].imageUrl, fit: BoxFit.fitHeight),
-                        footer: GridTileBar(
-                          backgroundColor: Color(0xFF262a34),
-                          title: Text(
-                            searchList[index].title.toString(),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          subtitle: Text(
-                            "£" + searchList[index].price,
-                            style: TextStyle(
-                              color: Color(0xFF0695b4),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          trailing: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF262a34),
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    trailing: Container(
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Color(0xFF262a34),
+                                        ),
+                                        child: productList[0].data[index].quantity != 0
+                                            ? Row(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () {
+                                                      cart.decreaseProductQuantity(productList[0].data[index].cartItemId.toString());
+                                                      getProduct();
+                                                    },
+                                                    child: CircleAvatar(
+                                                      radius: 15,
+                                                      backgroundColor: Colors.grey.withOpacity(.1),
+                                                      child: Icon(
+                                                        Icons.remove,
+                                                        color: Colors.white70,
+                                                        size: 15,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text(
+                                                    productList[0].data[index].quantity.toString(),
+                                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0695b4)),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      cart.increaseProductQuantity(productList[0].data[index].cartItemId.toString());
+                                                      getProduct();
+                                                    },
+                                                    child: CircleAvatar(
+                                                      radius: 15,
+                                                      backgroundColor: Colors.grey.withOpacity(.1),
+                                                      child: Icon(
+                                                        Icons.add,
+                                                        color: Colors.white70,
+                                                        size: 15,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            : IconButton(
+                                                onPressed: () async {
+                                                  print(productList[0].data[index].id.toString());
+                                                  await cart.addToCart(productList[0].data[index].id.toString());
+                                                  getProduct();
+                                                },
+                                                icon: Icon(
+                                                  Icons.shopping_cart_outlined,
+                                                  color: Color(0xFF0695b4),
+                                                ))),
+                                  ),
+                                ),
                               ),
-                              child: productList[0].data[index].quantity != 0
-                                  ? Row(
-                                children: [
-                                  InkWell(
-                                    onTap: (){
-                                      cart.decreaseProductQuantity(productList[0].data[index].cartItemId.toString());
-                                      getProduct();
-                                    },
-                                    child: CircleAvatar(
-                                      radius: 15,
-                                      backgroundColor: Colors.grey.withOpacity(.1),
-                                      child: Icon(
-                                        Icons.remove,
-                                        color: Colors.white70,
-                                        size: 15,
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(0, 5, 5, 0),
+                                  child: Container(
+                                    height: 35,
+                                    width: 35,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFF262a34),
+                                    ),
+                                    child: productList[0].data[index].watchListItemId != ''
+                                        ? GestureDetector(
+                                            onTap: () {
+                                              favorite.removeFromFav(productList[0].data[index].watchListItemId.toString());
+                                              getProduct();
+                                            },
+                                            child: Icon(
+                                              Icons.favorite,
+                                              color: Colors.red,
+                                              size: 18,
+                                            ))
+                                        : GestureDetector(
+                                            onTap: () {
+                                              getProduct();
+                                              favorite.addToWishlist(productList[0].data[index].id.toString());
+                                            },
+                                            child: Icon(
+                                              Icons.favorite_outline,
+                                              color: Colors.white70,
+                                              size: 18,
+                                            )),
+                                  ),
+                                ),
+                              )
+                            ]),
+                          );
+                        })
+                    : GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 5,
+                          crossAxisSpacing: 5,
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.75,
+                        ),
+                        itemCount: searchList.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                '/detail',
+                                arguments: productList[0].data[index],
+                              );
+                            },
+                            child: Stack(children: [
+                              Card(
+                                child: GridTile(
+                                  child: Image.network(searchList[index].imageUrl, fit: BoxFit.fitHeight),
+                                  footer: GridTileBar(
+                                    backgroundColor: Color(0xFF262a34),
+                                    title: Text(
+                                      searchList[index].title.toString(),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    productList[0].data[index].quantity.toString(), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0695b4)),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  InkWell(
-                                    onTap: (){
-                                      cart.increaseProductQuantity(productList[0].data[index].cartItemId.toString());
-                                      getProduct();
-                                    },
-                                    child: CircleAvatar(
-                                      radius: 15,
-                                      backgroundColor: Colors.grey.withOpacity(.1),
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white70,
-                                        size: 15,
+                                    subtitle: Text(
+                                      "£" + searchList[index].price,
+                                      style: TextStyle(
+                                        color: Color(0xFF0695b4),
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
+                                    trailing: Container(
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Color(0xFF262a34),
+                                        ),
+                                        child: productList[0].data[index].quantity != 0
+                                            ? Row(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () {
+                                                      cart.decreaseProductQuantity(productList[0].data[index].cartItemId.toString());
+                                                      getProduct();
+                                                    },
+                                                    child: CircleAvatar(
+                                                      radius: 15,
+                                                      backgroundColor: Colors.grey.withOpacity(.1),
+                                                      child: Icon(
+                                                        Icons.remove,
+                                                        color: Colors.white70,
+                                                        size: 15,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text(
+                                                    productList[0].data[index].quantity.toString(),
+                                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0695b4)),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      cart.increaseProductQuantity(productList[0].data[index].cartItemId.toString());
+                                                      getProduct();
+                                                    },
+                                                    child: CircleAvatar(
+                                                      radius: 15,
+                                                      backgroundColor: Colors.grey.withOpacity(.1),
+                                                      child: Icon(
+                                                        Icons.add,
+                                                        color: Colors.white70,
+                                                        size: 15,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            : IconButton(
+                                                onPressed: () async {
+                                                  print(productList[0].data[index].id.toString());
+                                                  await cart.addToCart(productList[0].data[index].id.toString());
+                                                  getProduct();
+                                                },
+                                                icon: Icon(
+                                                  Icons.shopping_cart_outlined,
+                                                  color: Color(0xFF0695b4),
+                                                ))),
                                   ),
-                                ],
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(0, 5, 5, 0),
+                                  child: Container(
+                                    height: 35,
+                                    width: 35,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFF262a34),
+                                    ),
+                                    child: productList[0].data[index].watchListItemId != ''
+                                        ? GestureDetector(
+                                            onTap: () {
+                                              favorite.removeFromFav(productList[0].data[index].watchListItemId.toString());
+                                              getProduct();
+                                            },
+                                            child: Icon(
+                                              Icons.favorite,
+                                              color: Colors.red,
+                                              size: 18,
+                                            ))
+                                        : GestureDetector(
+                                            onTap: () {
+                                              getProduct();
+                                              favorite.addToWishlist(productList[0].data[index].id.toString());
+                                            },
+                                            child: Icon(
+                                              Icons.favorite_outline,
+                                              color: Colors.white70,
+                                              size: 18,
+                                            )),
+                                  ),
+                                ),
                               )
-                                  : IconButton(
-                                  onPressed: () async{
-                                    print(productList[0].data[index].id.toString());
-                                    await cart.addToCart(productList[0].data[index].id.toString());
-                                    getProduct();
-                                  },
-                                  icon: Icon(
-                                    Icons.shopping_cart_outlined,
-                                    color: Color(0xFF0695b4),
-                                  ))),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 5, 5, 0),
-                        child: Container(
-                          height: 35,
-                          width: 35,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xFF262a34),
-                          ),
-                          child: productList[0].data[index].watchListItemId != ''
-                              ? GestureDetector(
-                              onTap: () {
-                                favorite.removeFromFav(productList[0].data[index].watchListItemId.toString());
-                                getProduct();
-                              },
-                              child: Icon(
-                                Icons.favorite,
-                                color: Colors.red,
-                                size: 18,
-                              ))
-                              : GestureDetector(
-                              onTap: () {
-                                getProduct();
-                                favorite.addToWishlist(productList[0].data[index].id.toString());
-                              },
-                              child: Icon(
-                                Icons.favorite_outline,
-                                color: Colors.white70,
-                                size: 18,
-                              )
-                          ),
-                        ),
-                      ),
-                    )
-                  ]),
-                );
-              }) ,
-        ) : SpinKitCircle(
-          color: Color(0xFF0695b4),
-        )
+                            ]),
+                          );
+                        }),
+              )
+            : SpinKitCircle(
+                color: Color(0xFF0695b4),
+              )
       ],
     );
   }

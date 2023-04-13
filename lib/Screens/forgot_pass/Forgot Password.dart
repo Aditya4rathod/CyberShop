@@ -16,21 +16,19 @@ class _ForgotPassState extends State<ForgotPass> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String? userID;
 
-  void fetchData(String emailId)async{
+  void fetchData(String emailId) async {
     String api = 'https://shopping-app-backend-t4ay.onrender.com/user/forgotPassword';
     final Data = {
-      'emailId' : emailId,
+      'emailId': emailId,
     };
     final response = await http.post(Uri.parse(api), body: Data);
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       var responsebody = jsonDecode(response.body);
       userID = responsebody['data']['_id'];
       print(response.statusCode);
       print(responsebody);
-      Navigator.pushNamed(context, '/forgotpassotp',
-      arguments: userID);
-    }
-    else if(response.statusCode ==400){
+      Navigator.pushNamed(context, '/forgotpassotp', arguments: userID);
+    } else if (response.statusCode == 400) {
       var responsebody = jsonDecode(response.body);
       print(response.statusCode);
       print(responsebody);
@@ -38,7 +36,6 @@ class _ForgotPassState extends State<ForgotPass> {
   }
 
   SnackBar snackBar2 = SnackBar(content: Text('Your Account is Not Verify,Kindly Register Again!!', style: TextStyle(color: Colors.red)));
-
 
   @override
   Widget build(BuildContext context) {
@@ -125,10 +122,9 @@ class _ForgotPassState extends State<ForgotPass> {
                   padding: EdgeInsets.fromLTRB(110, 10, 120, 10),
                 ),
                 onPressed: () {
-                  if (formKey.currentState!.validate())
-                    {
-                      fetchData(userEmail.text);
-                    }
+                  if (formKey.currentState!.validate()) {
+                    fetchData(userEmail.text);
+                  }
                   ScaffoldMessenger.of(context).showSnackBar(snackBar2);
                 },
                 child: Text('Continue')),

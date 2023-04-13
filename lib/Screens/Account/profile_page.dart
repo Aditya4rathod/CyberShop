@@ -27,19 +27,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               title: Text('Change Password', style: TextStyle(color: Color(0xFF0695b4))),
               trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Color(0xFF0695b4),
-                ),
-
+                Icons.arrow_forward_ios,
+                color: Color(0xFF0695b4),
               ),
             ),
           ),
-
+        ),
         SizedBox(
           height: 20,
         ),
         InkWell(
-          onTap: () async{
+          onTap: () async {
             final pref = await SharedPreferences.getInstance();
             pref.clear();
             Navigator.pushNamed(context, '/login');
@@ -57,13 +55,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: TextStyle(color: Color(0xFF0695b4)),
               ),
               trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Color(0xFF0695b4),
-                ),
+                Icons.arrow_forward_ios,
+                color: Color(0xFF0695b4),
               ),
             ),
           ),
-
+        ),
       ],
     );
   }

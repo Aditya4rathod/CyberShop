@@ -77,37 +77,37 @@ class _ChangePasswordState extends State<ChangePassword> {
                       color: Colors.white,
                     ),
                     decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xFF262a34),
-                      labelText: 'New Password',
-                      labelStyle: TextStyle(color: Colors.white38),
-                      icon: Icon(
-                        Icons.password_outlined,
-                        color: Color(0xFF0695b4),
-                      ),
+                        filled: true,
+                        fillColor: Color(0xFF262a34),
+                        labelText: 'New Password',
+                        labelStyle: TextStyle(color: Colors.white38),
+                        icon: Icon(
+                          Icons.password_outlined,
+                          color: Color(0xFF0695b4),
+                        ),
                         suffixIcon: GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             setState(() {
                               hide = !hide;
                             });
                           },
-                          child : hide ?  Icon(
-                            Icons.visibility,
-                            color: Colors.white38,
-                          ) : Icon(
-                            Icons.visibility_off,
-                            color: Colors.white38,
-                          ),
-                        )
-                    ),
+                          child: hide
+                              ? Icon(
+                                  Icons.visibility,
+                                  color: Colors.white38,
+                                )
+                              : Icon(
+                                  Icons.visibility_off,
+                                  color: Colors.white38,
+                                ),
+                        )),
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    validator: (value){
-                      if(value!.isEmpty){
+                    validator: (value) {
+                      if (value!.isEmpty) {
                         return 'please re-enter your password';
-                      }
-                      else if(value!=userPassword.text){
+                      } else if (value != userPassword.text) {
                         return 'Password Not Matching';
                       }
                     },
@@ -118,29 +118,30 @@ class _ChangePasswordState extends State<ChangePassword> {
                       color: Colors.white,
                     ),
                     decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xFF262a34),
-                      labelText: 'Re-Enter New Password',
-                      labelStyle: TextStyle(color: Colors.white38),
-                      icon: Icon(
-                        Icons.password_outlined,
-                        color: Color(0xFF0695b4),
-                      ),
+                        filled: true,
+                        fillColor: Color(0xFF262a34),
+                        labelText: 'Re-Enter New Password',
+                        labelStyle: TextStyle(color: Colors.white38),
+                        icon: Icon(
+                          Icons.password_outlined,
+                          color: Color(0xFF0695b4),
+                        ),
                         suffixIcon: GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             setState(() {
                               hide1 = !hide1;
                             });
                           },
-                          child : hide1 ?  Icon(
-                            Icons.visibility,
-                            color: Colors.white38,
-                          ) : Icon(
-                            Icons.visibility_off,
-                            color: Colors.white38,
-                          ),
-                        )
-                    ),
+                          child: hide1
+                              ? Icon(
+                                  Icons.visibility,
+                                  color: Colors.white38,
+                                )
+                              : Icon(
+                                  Icons.visibility_off,
+                                  color: Colors.white38,
+                                ),
+                        )),
                   ),
                   SizedBox(height: 30),
                   Row(
@@ -156,7 +157,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                         ),
                         onPressed: () {
-                          if(formKey.currentState!.validate()) {
+                          if (formKey.currentState!.validate()) {
                             print('add');
                             changePass(userPassword.text, reEnterpass.text);
                           }

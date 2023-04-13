@@ -16,49 +16,42 @@ class RegisterScreen extends StatefulWidget {
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-
-
 class _RegisterScreenState extends State<RegisterScreen> {
+  bool hide = true;
+  bool hide1 = true;
+  String? userId;
 
-  void pref(String mail) async {
-    SharedPreferences getData = await SharedPreferences.getInstance();
-    getData.setString('emailId', mail);
-  }
   TextEditingController userName = TextEditingController();
   TextEditingController userEmail = TextEditingController();
   TextEditingController userNumber = TextEditingController();
   TextEditingController userPassword1 = TextEditingController();
   TextEditingController userPassword2 = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  bool hide = true;
-  bool hide1 = true;
 
+  void pref(String mail) async {
+    SharedPreferences getData = await SharedPreferences.getInstance();
+    getData.setString('emailId', mail);
+  }
 
-  //SignupModelClass signupModelClass = SignupModelClass(status: 0, msg: '', data: SignUpData(id: '', name: '', mobileNo: '', emailId: '', status: 0, jwtToken: '', fcmToken: '', createdAt: '', updatedAt: '', v: 0));
-  String? userId;
-
-  void fetchData(String name ,String mobileNo , String emailId, String password) async{
+  void fetchData(String name, String mobileNo, String emailId, String password) async {
     String api = 'https://shopping-app-backend-t4ay.onrender.com/user/registerUser';
-    final data =  {
+    final data = {
       "name": name,
       "mobileNo": mobileNo,
       "emailId": emailId,
       "password": password,
     };
-    var response = await http.post(Uri.parse(api),body: data);
+    var response = await http.post(Uri.parse(api), body: data);
     print(response.statusCode);
 
-    if(response.statusCode == 201) {
+    if (response.statusCode == 201) {
       var responsebody = jsonDecode(response.body);
       print(responsebody);
       userId = responsebody['data']['_id'];
       pref(emailId);
-      Navigator.pushNamed(context, '/otp',
-          arguments: userId);
-
-    }
-    else if(response.statusCode == 400){
-      var responsebody = jsonDecode(response.body);
+      Navigator.pushNamed(context, '/otp', arguments: userId);
+    } else if (response.statusCode == 400) {
+      print(response.statusCode);
     }
   }
 
@@ -159,10 +152,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your contact number';
-                      } else if (value.length !=10) {
+                      } else if (value.length != 10) {
                         return 'please enter valid number';
-                      }
-                      else return null;
+                      } else
+                        return null;
                     },
                     controller: userNumber,
                     keyboardType: TextInputType.phone,
@@ -196,39 +189,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       color: Colors.white,
                     ),
                     decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xFF262a34),
-                      labelText: 'Password',
-                      labelStyle: TextStyle(color: Colors.white38),
-                      icon: Icon(
-                        Icons.password_outlined,
-                        color: Colors.white38,
-                      ),
+                        filled: true,
+                        fillColor: Color(0xFF262a34),
+                        labelText: 'Password',
+                        labelStyle: TextStyle(color: Colors.white38),
+                        icon: Icon(
+                          Icons.password_outlined,
+                          color: Colors.white38,
+                        ),
                         suffixIcon: GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             setState(() {
                               hide = !hide;
                             });
                           },
-                          child : hide ?  Icon(
-                            Icons.visibility,
-                            color: Colors.white38,
-                          ) : Icon(
-                            Icons.visibility_off,
-                            color: Colors.white38,
-                          ),
-                        )
-                    ),
+                          child: hide
+                              ? Icon(
+                                  Icons.visibility,
+                                  color: Colors.white38,
+                                )
+                              : Icon(
+                                  Icons.visibility_off,
+                                  color: Colors.white38,
+                                ),
+                        )),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(13.0),
                   child: TextFormField(
-                    validator: (value){
-                      if(value!.isEmpty){
+                    validator: (value) {
+                      if (value!.isEmpty) {
                         return 'please re-enter your password';
-                      }
-                      else if(value!=userPassword1.text){
+                      } else if (value != userPassword1.text) {
                         return 'Password Not Matching';
                       }
                     },
@@ -239,29 +232,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       color: Colors.white,
                     ),
                     decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xFF262a34),
-                      labelText: 'Re-Enter Password',
-                      labelStyle: TextStyle(color: Colors.white38),
-                      icon: Icon(
-                        Icons.password_outlined,
-                        color: Colors.white38,
-                      ),
+                        filled: true,
+                        fillColor: Color(0xFF262a34),
+                        labelText: 'Re-Enter Password',
+                        labelStyle: TextStyle(color: Colors.white38),
+                        icon: Icon(
+                          Icons.password_outlined,
+                          color: Colors.white38,
+                        ),
                         suffixIcon: GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             setState(() {
                               hide1 = !hide1;
                             });
                           },
-                          child : hide1 ?  Icon(
-                            Icons.visibility,
-                            color: Colors.white38,
-                          ) : Icon(
-                            Icons.visibility_off,
-                            color: Colors.white38,
-                          ),
-                        )
-                    ),
+                          child: hide1
+                              ? Icon(
+                                  Icons.visibility,
+                                  color: Colors.white38,
+                                )
+                              : Icon(
+                                  Icons.visibility_off,
+                                  color: Colors.white38,
+                                ),
+                        )),
                   ),
                 ),
                 SizedBox(
@@ -289,5 +283,4 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
     );
   }
-
 }

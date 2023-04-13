@@ -3,8 +3,7 @@ import 'package:online_ordering_system/Provider/cartProvider.dart';
 import 'package:online_ordering_system/Provider/favoriteProvider.dart';
 import 'package:online_ordering_system/Provider/orderedList.dart';
 import 'package:online_ordering_system/Provider/registerProvider.dart';
-import 'package:online_ordering_system/Screens/Account/Fields/change_pass.dart';
-import 'package:online_ordering_system/Screens/Account/Fields/my_account.dart';
+import 'package:online_ordering_system/Screens/Account/change_pass.dart';
 import 'package:online_ordering_system/Screens/Buy%20Again/order_history.dart';
 import 'package:online_ordering_system/Screens/Home/Home_Screen.dart';
 import 'package:online_ordering_system/Screens/Splash_Screen/Splash_Screen.dart';
@@ -54,7 +53,6 @@ class MyApp extends StatelessWidget {
           '/detail': (context) => DetailPage(),
           '/cart': (context) => CartView(),
           '/wishlist': (context) => WishList(),
-          '/Myacc': (context) => MyAccount(),
           '/history': (context) => OrderHistory(),
           '/passchange': (context) => ChangePassword(),
         },

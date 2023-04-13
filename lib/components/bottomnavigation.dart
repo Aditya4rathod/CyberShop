@@ -1,12 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:online_ordering_system/Screens/Account/Profile_pic.dart';
 import 'package:online_ordering_system/Screens/Buy%20Again/order_history.dart';
 import 'package:online_ordering_system/Screens/Home/Home_Screen.dart';
 import 'package:online_ordering_system/Screens/WishList/wishitems.dart';
-import 'package:online_ordering_system/Screens/cart/cartdata.dart';
-import 'package:online_ordering_system/Screens/search/searchScreen.dart';
+
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({Key? key}) : super(key: key);
@@ -20,12 +18,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   static List _list = [
     HomeScreen(),
     WishList(),
-    //Text('Notification', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: Colors.blue)),
     OrderHistory(),
-    //Text('cart', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold,color: Colors.blue)),
     ProfilePic(),
-    // Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold,color: Colors.blue)),
-  ];
+   ];
 
   @override
   Widget build(BuildContext context) {
