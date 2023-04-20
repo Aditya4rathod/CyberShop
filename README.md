@@ -57,6 +57,14 @@ Sign Up will be done using email, name and password. Google and Facebook login i
 |      ![](assets/images/cred_login.png)       |        ![](assets/images/cred_register.png)    | 
 
 
+## 📲OTP Screen:
+Onboarding Screen gives a short overview of an app. This Screen consists of three layouts which slide as we swipe left.
+
+|             OTP Screen                            
+| :--------------------------------:       
+|  ![](assets/images/otp_screen.png) 
+
+
 ## 🔑Forgot Password Screen:
 
 On the Login page, we will use Forgot Password bottom to reset the password. On tapping it will navigate us to forget password screen, it will have one reset password button. This button will trigger the verify method that will send an OTP to the given mail.
@@ -96,7 +104,7 @@ Provides information on a Favorite product. This information includes price, pro
 The Shopping Cart page lists all of the items that a customer added to their shopping cart. Customers begin the checkout process from the Current Order page. Customers can also apply promotional codes and coupons, or select promotional gifts.
 
 |             Items in Cart                |                  Empty Cart
-| :--------------------------------:       |  : ------------------------------------
+| :--------------------------------------: |  : ------------------------------------:
 |       ![](assets/images/cart.png)        |         ![](assets/images/empty_cart.png)
 
 
