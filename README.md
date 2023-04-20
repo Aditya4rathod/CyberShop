@@ -103,7 +103,7 @@ Provides information on a Favorite product. This information includes price, pro
 
 The Shopping Cart page lists all of the items that a customer added to their shopping cart. Customers begin the checkout process from the Current Order page. Customers can also apply promotional codes and coupons, or select promotional gifts.
 
-|       ![](assets/images/cart.png)        |         ![](assets/images/empty_cart.png)
+|       ![](assets/images/cart.png)        |         ![](assets/images/empty_cart.png)  |  ![](assets/images/order_placed.png)
 
 
 ## Order History:
