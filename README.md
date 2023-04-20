@@ -49,12 +49,12 @@ Sign Up will be done using email, name and password. Google and Facebook login i
 
 |               Sign In                    |                 Sign Up                   |              
 | :--------------------------------:       | :---------------------------------------: | 
-|       ![](assets/images/login.png)      |       ![](assets/images/registration.png)     | 
+|       ![](assets/images/login_eye.png)      |       ![](assets/images/register_eye.png)     | 
 
 
 |          With Credentials                |              With Credentials             |              
 | :--------------------------------:       | :---------------------------------------: |
-|      ![](assets/images/login2.PNG)       |        ![](assets/images/sign_up2.PNG)    | 
+|      ![](assets/images/cred_login.png)       |        ![](assets/images/cred_register.png)    | 
 
 
 ## 🔑Forgot Password Screen:
@@ -79,7 +79,7 @@ Provides information on a specific product. This information includes size, colo
 
 |             Product 1                         |                Product 2                  
 | :-------------------------------------------: | :---------------------------------------:
-|  ![](assets/images/detail.png)                |     ![](assets/images/added_detail.png)   
+|  ![](assets/images/datail.png)                |     ![](assets/images/added_detail.png)   
 
 
 ## Wishlist screen:
@@ -97,7 +97,16 @@ The Shopping Cart page lists all of the items that a customer added to their sho
 
 |             Items in Cart                |                  Empty Cart
 | :--------------------------------:       |  : ------------------------------------
-|       ![](assets/images/cart.Png)        |         ![](assets/images/empty_cart.png)
+|       ![](assets/images/cart.png)        |         ![](assets/images/empty_cart.png)
+
+
+## Order History:
+This screen shows all the ordered products with their name, image, quantity and price. 
+
+|             Order History             |                
+| :--------------------------------:   | 
+|  ![](assets/images/order_history.png)   | 
+
 
 ## 👤 Profile page:
 A profile page represents information regarding an user's identity. It may contain personal data, a profile photo and more.
@@ -106,12 +115,7 @@ A profile page represents information regarding an user's identity. It may conta
 | :--------------------------------:       | :------------------------------------------:
 |  ![](assets/images/account.png)          |     ![](assets/images/change_password.png)
 
-## Order History:
-This screen shows all the ordered products with their name, image, quantity and price. 
 
-|             Order History             |                
-| :--------------------------------:   | 
-|  ![](assets/images/order_history.png)   | 
 
 
 
