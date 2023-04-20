@@ -23,8 +23,6 @@ Cybershop is a clean, minimal design and very detailed E-commerce App. It comes 
 
 ## :dart: Features:
 
-• 15+ High Quality iOS & Android Screens
-
 • Clean, unique and modern style
 
 • Layered & Well Organized
