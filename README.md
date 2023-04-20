@@ -41,7 +41,7 @@ Onboarding Screen gives a short overview of an app. This Screen consists of thre
 
 |             Splash Screen 1                            
 | :--------------------------------:       
-|  ![](assets/images/splash.png)           
+|  ![](assets/images/splash.PNG)           
 
 ## 🔐Sign In/Sign Up Screen:
 
