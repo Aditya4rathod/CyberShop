@@ -94,16 +94,16 @@ Provides information on a specific product. This information includes size, colo
 Provides information on a Favorite product. This information includes price, product information, image and you can add product to cart from here also but can't increase pr descrease quantiy .
 
 
-|             Wishlist                          |                Empty wishlist
+|            Empty Wishlist                          |                wishlist
 | :-------------------------------------------: | :---------------------------------------:
-|  ![](assets/images/wishlist.png)              |     ![](assets/images/empty_wishlist.png)
+|  ![](assets/images/empty_wishlist.png)              |     ![](assets/images/wishlist.png)
 
 
 ## 🛒Cart page:
 
 The Shopping Cart page lists all of the items that a customer added to their shopping cart. Customers begin the checkout process from the Current Order page. Customers can also apply promotional codes and coupons, or select promotional gifts.
 
-|       ![](assets/images/cart.png)        |         ![](assets/images/empty_cart.png)  |  ![](assets/images/order_placed.png)
+|       ![](assets/images/empty_cart.png)        |         ![](assets/images/cart.png)  |  ![](assets/images/order_placed.png)
 
 
 ## Order History:
