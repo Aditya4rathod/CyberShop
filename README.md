@@ -81,6 +81,16 @@ Provides information on a specific product. This information includes size, colo
 | :-------------------------------------------: | :---------------------------------------:
 |  ![](assets/images/detail.png)                |     ![](assets/images/added_detail.png)   
 
+
+## Wishlist screen:
+Provides information on a Favorite product. This information includes price, product information, image and you can add product to cart from here also but can't increase pr descrease quantiy .
+
+
+|             Wishlist                          |                Empty wishlist
+| :-------------------------------------------: | :---------------------------------------:
+|  ![](assets/images/wishlist.png)              |     ![](assets/images/empty_wishlist.png)
+
+
 ## 🛒Cart page:
 
 The Shopping Cart page lists all of the items that a customer added to their shopping cart. Customers begin the checkout process from the Current Order page. Customers can also apply promotional codes and coupons, or select promotional gifts.
@@ -92,9 +102,16 @@ The Shopping Cart page lists all of the items that a customer added to their sho
 ## 👤 Profile page:
 A profile page represents information regarding an user's identity. It may contain personal data, a profile photo and more.
 
-|             MyAccount Drawer             |                
-| :--------------------------------:       | 
-|  ![](assets/images/account.png)          | 
+|             MyAccount Drawer             |             Change Password          
+| :--------------------------------:       | :------------------------------------------:
+|  ![](assets/images/account.png)          |     ![](assets/images/change_password.png)
+
+## Order History:
+This screen shows all the ordered products with their name, image, quantity and price. 
+
+|             Order History             |                
+| :--------------------------------:   | 
+|  ![](assets/images/order_history.png)   | 
 
 
 
