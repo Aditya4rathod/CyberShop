@@ -34,7 +34,7 @@ Cybershop is a clean, minimal design and very detailed E-commerce App. It comes 
 • Easy to customize
 
 
-🎯 The App will contain a few components: Splash Screens,Sign In Screen, SignUp Screen,Forgot Password Screen, Home Screen, List of Categories, Category Product Screens, Product Details Screen with Rating and Reviews, Ordering Process, User Profile with Notifications and Favorites.
+🎯 The App will contain a few components: Splash Screens,Sign In Screen, SignUp Screen,Forgot Password Screen, otp screen , Home Screen, cart screen, Product Details Screen, Order history, User Profile ,Favorites and change password.
 
 ## 📲Splash Screen:
 Onboarding Screen gives a short overview of an app. This Screen consists of three layouts which slide as we swipe left.
