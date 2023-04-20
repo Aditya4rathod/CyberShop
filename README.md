@@ -85,7 +85,7 @@ This screen shows all the products with their name, image, and price. Here you c
 Provides information on a specific product. This information includes size, color, price, product information, reviews, and other relevant information customers want to know before purchasing. Here,customers can change the attributes of an item, move an item to a wish list, or remove an item from the shopping cart.
 
 
-|             Product 1                         |                Product 2                  
+|             Product 1                         |                Product Added to cart                  
 | :-------------------------------------------: | :---------------------------------------:
 |  ![](assets/images/datail.png)                |     ![](assets/images/added_detail.png)   
 
@@ -103,8 +103,6 @@ Provides information on a Favorite product. This information includes price, pro
 
 The Shopping Cart page lists all of the items that a customer added to their shopping cart. Customers begin the checkout process from the Current Order page. Customers can also apply promotional codes and coupons, or select promotional gifts.
 
-|             Items in Cart                |                  Empty Cart
-| :--------------------------------------: |  : ------------------------------------:
 |       ![](assets/images/cart.png)        |         ![](assets/images/empty_cart.png)
 
 
