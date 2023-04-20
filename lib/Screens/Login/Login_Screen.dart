@@ -31,6 +31,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void fetchData(String emailId, String password) async {
+    isLoading = true;
     var response = await http.post(Uri.parse("https://shopping-app-backend-t4ay.onrender.com/user/login"), body: {
       "emailId": emailId,
       "password": password,
@@ -43,6 +44,7 @@ class _LoginPageState extends State<LoginPage> {
       var name = responseBody['data']['name'];
       var mobileNo = responseBody['data']['mobileNo'];
       pref(jwt, emailId, mobileNo, name, password, isLogin);
+      isLoading = false;
       print(response.statusCode);
       print(responseBody);
       Navigator.pushNamed(
@@ -178,7 +180,9 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(
                           height: 20,
                         ),
-                        ElevatedButton(
+                       isLoading ? SpinKitCircle(
+                         color: Color(0xFF0695b4)):
+                       ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               primary: Color(0xFF0695b4),
                               padding: EdgeInsets.fromLTRB(110, 10, 120, 10),
@@ -187,6 +191,7 @@ class _LoginPageState extends State<LoginPage> {
                               if (formKey.currentState!.validate()) {
                                 fetchData(userEmail.text, userPassword.text);
                               } else {}
+                              setState(() {});
                             },
                             child: Text('Sign In')),
                         SizedBox(
@@ -230,7 +235,20 @@ class _LoginPageState extends State<LoginPage> {
         content: Text(
           "Invalid username or password!!",
           style: TextStyle(color: Colors.white70, fontWeight: FontWeight.w600, fontSize: 15),
-        ));
+        ),
+      actions: [
+        TextButton(onPressed: (){
+          Navigator.pop(context);
+          isLoading = false;
+          setState(() {});
+        }, child: Text('OK',
+        style: TextStyle(
+          color: Color(0xFF0695b4),
+        ),))
+      ],
+    );
+
+
     showDialog(
       context: context,
       builder: (BuildContext context) {

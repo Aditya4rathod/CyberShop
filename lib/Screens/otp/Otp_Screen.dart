@@ -80,6 +80,16 @@ class _OtpScreenState extends State<OtpScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFF181a20),
+        appBar: AppBar(
+          backgroundColor :  Color(0xFF181a20),
+          leading: IconButton(
+            onPressed: (){
+              Navigator.of(context);
+            },
+            icon: Icon(Icons.arrow_back_sharp,
+            ),
+          ),
+        ),
         body: Padding(
           padding: EdgeInsets.only(left: 15, right: 15, top: 100),
           child: SingleChildScrollView(

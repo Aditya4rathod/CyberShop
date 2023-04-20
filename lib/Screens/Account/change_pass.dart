@@ -32,7 +32,7 @@ class _ChangePasswordState extends State<ChangePassword> {
       var responsebody = jsonDecode(response.body);
       print(response.statusCode);
       print(responsebody);
-      Navigator.pushNamed(context, '/login');
+      Navigator.pushNamed(context, '/bottoms');
     } else if (response.statusCode == 400) {
       var responsebody = jsonDecode(response.body);
     }

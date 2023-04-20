@@ -32,6 +32,7 @@ class _ForgotPassState extends State<ForgotPass> {
       var responsebody = jsonDecode(response.body);
       print(response.statusCode);
       print(responsebody);
+      ScaffoldMessenger.of(context).showSnackBar(snackBar2);
     }
   }
 
@@ -125,7 +126,6 @@ class _ForgotPassState extends State<ForgotPass> {
                   if (formKey.currentState!.validate()) {
                     fetchData(userEmail.text);
                   }
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar2);
                 },
                 child: Text('Continue')),
           ])),

@@ -51,7 +51,7 @@ class _DetailPageState extends State<DetailPage> {
   SnackBar snackBar = SnackBar(content: Text('Added to cart', style: TextStyle(color: Color(0xFF0695b4))));
 
   SnackBar snackBar2 = SnackBar(content: Text('Added to Wishlist', style: TextStyle(color: Colors.red)));
-
+  SnackBar snackBar1 = SnackBar(content: Text('Already added to cart'));
   late Data argument;
 
   @override
@@ -159,7 +159,7 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
                 Expanded(
-                  child: TextButton(
+                  child: argument.quantity == 0 ? TextButton(
                     onPressed: () {
                       addToCart(argument.id.toString());
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -176,7 +176,23 @@ class _DetailPageState extends State<DetailPage> {
                       backgroundColor: MaterialStateColor.resolveWith((states) => Color(0xFF0695b4)),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
                     ),
-                  ),
+                  ) : TextButton(
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar1);
+                    },
+                    child: Text(
+                      'Added'.toUpperCase(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 17,
+                      ),
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateColor.resolveWith((states) => Colors.grey),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
+                    ),
+                  )
                 ),
               ],
             ),

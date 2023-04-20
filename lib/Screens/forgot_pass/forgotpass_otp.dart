@@ -79,6 +79,16 @@ class _ForgotPassOtpState extends State<ForgotPassOtp> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFF181a20),
+        appBar: AppBar(
+          backgroundColor :  Color(0xFF181a20),
+          leading: IconButton(
+            onPressed: (){
+              Navigator.of(context);
+            },
+            icon: Icon(Icons.arrow_back_sharp,
+           ),
+          ),
+        ),
         body: Padding(
           padding: EdgeInsets.only(left: 15, right: 15, top: 100),
           child: SingleChildScrollView(
@@ -97,7 +107,7 @@ class _ForgotPassOtpState extends State<ForgotPassOtp> {
                   height: 15,
                 ),
                 Text(
-                  'We have sent verification code to the example@gmail.com',
+                  'We have sent verification code to your mail',
                   style: TextStyle(
                     color: Colors.grey,
                   ),
