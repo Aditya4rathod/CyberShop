@@ -35,7 +35,7 @@ Cybershop is a clean, minimal design and very detailed E-commerce App. It comes 
 🎯 The App will contain a few components: Splash Screens,Sign In Screen, SignUp Screen,Forgot Password Screen, otp screen , Home Screen, cart screen, Product Details Screen, Order history, User Profile ,Favorites and change password.
 
 ## 📲Splash Screen:
-Onboarding Screen gives a short overview of an app. This Screen consists of three layouts which slide as we swipe left.
+
 
 |             Splash Screen 1                            
 | :--------------------------------:       
@@ -43,7 +43,7 @@ Onboarding Screen gives a short overview of an app. This Screen consists of thre
 
 ## 🔐Sign In/Sign Up Screen:
 
-Sign Up will be done using email, name and password. Google and Facebook login included as well as forgot your password screen.
+
 
 |               Sign In                    |                 Sign Up                   |              
 | :--------------------------------:       | :---------------------------------------: | 
@@ -56,7 +56,7 @@ Sign Up will be done using email, name and password. Google and Facebook login i
 
 
 ## 📲OTP Screen:
-Onboarding Screen gives a short overview of an app. This Screen consists of three layouts which slide as we swipe left.
+
 
 |             OTP Screen                            
 | :--------------------------------:       
@@ -65,7 +65,6 @@ Onboarding Screen gives a short overview of an app. This Screen consists of thre
 
 ## 🔑Forgot Password Screen:
 
-On the Login page, we will use Forgot Password bottom to reset the password. On tapping it will navigate us to forget password screen, it will have one reset password button. This button will trigger the verify method that will send an OTP to the given mail.
 
 |          Forgot Password Screen          |            
 | :--------------------------------:       | 
